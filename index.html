@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origins Funnel | KPI Calculator</title>
+<link rel="icon" type="image/jpeg" href="data:image/jpeg;base64,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">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: #1e1e2e;
+    --border-light: #2a2a3e;
+    --green: #BAD7FD;
+    --green-deep: #6aaef8;
+    --green-dim: rgba(186,215,253,0.08);
+    --green-mid: rgba(186,215,253,0.15);
+    --red: #ff4d6d;
+    --amber: #ffb627;
+    --text: #e8e8f0;
+    --muted: #6b6b88;
+    --label: #9090b0;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  header {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  h1 span {
+    color: var(--green);
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .layout {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+  }
+
+  /* ── SECTION CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    background: var(--green-mid);
+    color: var(--green);
+    border: 1px solid rgba(186,215,253,0.25);
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: 0.08em;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* ── INPUT ROWS ── */
+  .rows {
+    padding: 4px 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .row:last-child { border-bottom: none; }
+  .row:hover { background: rgba(255,255,255,0.015); }
+
+  .row-left {}
+  .row-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .row-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── INPUT ── */
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    width: 130px;
+    transition: border-color 0.15s;
+  }
+
+  .input-wrap:focus-within {
+    border-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(186,215,253,0.08);
+  }
+
+  .prefix {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 0 8px;
+    background: rgba(255,255,255,0.03);
+    border-right: 1px solid var(--border-light);
+    height: 34px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  input[type="number"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    padding: 0 10px;
+    height: 34px;
+    width: 100%;
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  /* ── OUTPUT ROW ── */
+  .row.output {
+    background: var(--green-dim);
+    border-color: rgba(186,215,253,0.12);
+  }
+
+  .row.output:hover {
+    background: rgba(186,215,253,0.1);
+  }
+
+  .output-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green);
+    min-width: 130px;
+    text-align: right;
+  }
+
+  .output-val.warn { color: var(--amber); }
+  .output-val.bad  { color: var(--red); }
+
+  /* ── RESULTS PANEL ── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .result-cell {
+    background: var(--surface);
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .result-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .result-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .result-value.warn { color: var(--amber); }
+  .result-value.bad  { color: var(--red); }
+
+  .result-sub {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green-deep);
+    flex-shrink: 0;
+  }
+
+  .dot.warn { background: var(--amber); }
+  .dot.bad  { background: var(--red); }
+
+  .status-text { color: var(--label); }
+  .status-text strong { color: var(--text); font-weight: 500; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  @media (max-width: 520px) {
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .result-cell:last-child { grid-column: span 2; }
+    .output-val { font-size: 15px; }
+    h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">AdClass · KPI Calculator</div>
+  <h1><span>Origins</span> Funnel KPI Calculator</h1>
+  <p class="subtitle">Origins + Evolve upsell · live recalculation</p>
+</header>
+
+<div class="layout">
+
+  <!-- SECTION 1: ORIGINS -->
+  <div class="card">
+    <div class="card-header">
+      <span class="badge">01</span>
+      <span class="card-title">Origins Program</span>
+      <span class="card-desc">$98/mo membership</span>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Origins Price</div>
+          <div class="row-formula">Monthly price per Origins member</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="cashAOV" value="98" min="0" step="1">
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Avg. Origins Retention</div>
+          <div class="row-formula">How many months members stay</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">mo</span>
+          <input type="number" id="originsMonths" value="3" min="0" step="0.5">
+        </div>
+      </div>
+      <div class="row output">
+        <div class="row-left">
+          <div class="row-name">Origins LTV</div>
+          <div class="row-formula">Cash AOV × Retention Months</div>
+        </div>
+        <div class="output-val" id="originsLTV">$392.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: EVOLVE -->
+  <div class="card">
+    <div class="card-header">
+      <span class="badge">02</span>
+      <span class="card-title">Evolve Upsell</span>
+      <span class="card-desc">$1,700/mo program</span>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Evolve Price</div>
+          <div class="row-formula">Monthly price per Evolve member</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="evolvePrice" value="1700" min="0" step="1">
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Avg. Evolve Retention</div>
+          <div class="row-formula">How many months Evolve members stay</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">mo</span>
+          <input type="number" id="evolveMonths" value="4" min="0" step="0.5">
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Evolve Upsell %</div>
+          <div class="row-formula">% of Origins members who buy Evolve</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">%</span>
+          <input type="number" id="evolveUpsellPct" value="1" min="0" max="100" step="0.1">
+        </div>
+      </div>
+      <div class="row output">
+        <div class="row-left">
+          <div class="row-name">Evolve LTV</div>
+          <div class="row-formula">Evolve Price × Evolve Months</div>
+        </div>
+        <div class="output-val" id="evolveLTV">$10,200.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: BLENDED RESULTS -->
+  <div class="card">
+    <div class="card-header">
+      <span class="badge">03</span>
+      <span class="card-title">Blended LTV &amp; CAC Targets</span>
+      <span class="card-desc">Calculated outputs</span>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-cell">
+        <span class="result-label">Blended LTV</span>
+        <span class="result-value" id="res-blendedLTV">—</span>
+        <span class="result-sub">per Origins customer acquired</span>
+      </div>
+      <div class="result-cell">
+        <span class="result-label">Evolve Contribution</span>
+        <span class="result-value" id="res-evolveContrib">—</span>
+        <span class="result-sub">upsell value per Origins acq.</span>
+      </div>
+      <div class="result-cell">
+        <span class="result-label">CAC</span>
+        <span class="result-value" id="res-CAC">—</span>
+        <span class="result-sub">at LTV:CAC ratio below</span>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="row-left">
+          <div class="row-name">Target LTV:CAC Ratio</div>
+          <div class="row-formula">Blended LTV ÷ CAC goal (e.g. 3 = healthy)</div>
+        </div>
+        <div class="input-wrap">
+          <span class="prefix">×</span>
+          <input type="number" id="ltvCacRatio" value="3" min="0.1" step="0.1">
+        </div>
+      </div>
+      <div class="row output">
+        <div class="row-left">
+          <div class="row-name">Max Allowable CAC</div>
+          <div class="row-formula">Blended LTV ÷ LTV:CAC Ratio</div>
+        </div>
+        <div class="output-val" id="maxCAC">—</div>
+      </div>
+      <div class="row output">
+        <div class="row-left">
+          <div class="row-name">C-ROAS (Cash AOV / CAC)</div>
+          <div class="row-formula">First-month cash return on ad spend</div>
+        </div>
+        <div class="output-val" id="cROAS">—</div>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar">
+      <span class="dot" id="statusDot"></span>
+      <span class="status-text" id="statusText"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+
+  const fmt = (n, prefix='$') => {
+    if (!isFinite(n)) return '—';
+    return prefix + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  };
+
+  function calc() {
+    const cashAOV       = parseFloat($('cashAOV').value)       || 0;
+    const originsMonths = parseFloat($('originsMonths').value)  || 0;
+    const evolvePrice   = parseFloat($('evolvePrice').value)    || 0;
+    const evolveMonths  = parseFloat($('evolveMonths').value)   || 0;
+    const upsellPct     = parseFloat($('evolveUpsellPct').value)|| 0;
+    const ltvCac        = parseFloat($('ltvCacRatio').value)    || 1;
+
+    // Origins LTV
+    const originsLTV = cashAOV * originsMonths;
+
+    // Evolve LTV (full, for a single Evolve customer)
+    const evolveLTV = evolvePrice * evolveMonths;
+
+    // Evolve contribution per Origins customer acquired
+    const evolveContrib = (upsellPct / 100) * evolveLTV;
+
+    // Blended LTV
+    const blendedLTV = originsLTV + evolveContrib;
+
+    // Max CAC
+    const maxCAC = ltvCac > 0 ? blendedLTV / ltvCac : 0;
+
+    // C-ROAS
+    const cROAS = maxCAC > 0 ? cashAOV / maxCAC : 0;
+
+    // Update outputs
+    $('originsLTV').textContent  = fmt(originsLTV);
+    $('evolveLTV').textContent   = fmt(evolveLTV);
+
+    $('res-blendedLTV').textContent   = fmt(blendedLTV);
+    $('res-evolveContrib').textContent = fmt(evolveContrib);
+    $('res-CAC').textContent          = fmt(maxCAC);
+
+    $('maxCAC').textContent = fmt(maxCAC);
+    $('cROAS').textContent  = cROAS.toFixed(2) + 'x';
+
+    // Color for C-ROAS
+    const cRoasEl = $('cROAS');
+    cRoasEl.className = 'output-val';
+    if (cROAS >= 1)       cRoasEl.classList.add('');   // green default
+    else if (cROAS >= 0.5) cRoasEl.classList.add('warn');
+    else                   cRoasEl.classList.add('bad');
+
+    // Status bar
+    const dot  = $('statusDot');
+    const text = $('statusText');
+    dot.className = 'dot';
+    if (ltvCac >= 3) {
+      text.innerHTML = `LTV:CAC of <strong>${ltvCac}x</strong> is healthy — you can spend <strong>${fmt(maxCAC)}</strong> per customer acquired.`;
+    } else if (ltvCac >= 2) {
+      dot.classList.add('warn');
+      text.innerHTML = `LTV:CAC of <strong>${ltvCac}x</strong> is marginal — aim for 3× or higher for sustainable growth.`;
+    } else {
+      dot.classList.add('bad');
+      text.innerHTML = `LTV:CAC of <strong>${ltvCac}x</strong> is risky — below 2× means acquisition costs could eat profitability.`;
+    }
+  }
+
+  // Wire all inputs
+  ['cashAOV','originsMonths','evolvePrice','evolveMonths','evolveUpsellPct','ltvCacRatio']
+    .forEach(id => $(id).addEventListener('input', calc));
+
+  calc();
+</script>
+</body>
+</html>
